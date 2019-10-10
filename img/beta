@@ -1,0 +1,91 @@
+import tensorflow as tf
+from tensorflow import keras
+from keras.datasets import mnist
+
+(train_images, train_labels), (test_images, test_labels) = mnist.load_data()
+class_names = ['zero', 'one', 'two', 'three', 'four',
+               'five', 'six', 'seven', 'eight', 'nine']
+
+train_images = train_images / 255.0
+
+test_images = test_images / 255.0
+
+model = keras.Sequential([
+    keras.layers.Flatten(input_shape=(28, 28)),
+    keras.layers.Dense(128, activation='relu'),
+    keras.layers.Dense(10, activation='softmax')
+])
+model.compile(optimizer='adam',
+              loss='sparse_categorical_crossentropy',
+              metrics=['accuracy'])
+model.fit(train_images, train_labels, epochs=10)
+import cv2
+import numpy as np
+path = r'C:\Users\tanisha\img\pup0.jpg'
+img = cv2.imread(path ,cv2.IMREAD_GRAYSCALE)
+dim = (28, 28)
+resized = cv2.resize(img, dim)
+resized=resized/255.0
+resized=1-resized
+list = []
+list.append(resized)
+path = r'C:\Users\tanisha\img\pup1.jpg'
+img = cv2.imread(path ,cv2.IMREAD_GRAYSCALE)
+resized = cv2.resize(img, dim)
+resized=resized/255.0
+resized=1-resized
+list.append(resized)
+path = r'C:\Users\tanisha\img\pup2.jpg'
+img = cv2.imread(path ,cv2.IMREAD_GRAYSCALE)
+resized = cv2.resize(img, dim)
+resized=resized/255.0
+resized=1-resized
+list.append(resized)
+path = r'C:\Users\tanisha\img\pup3.jpg'
+img = cv2.imread(path ,cv2.IMREAD_GRAYSCALE)
+resized = cv2.resize(img, dim)
+resized=resized/255.0
+resized=1-resized
+list.append(resized)
+path = r'C:\Users\tanisha\img\pup4.jpg'
+img = cv2.imread(path ,cv2.IMREAD_GRAYSCALE)
+resized = cv2.resize(img, dim)
+resized=resized/255.0
+resized=1-resized
+list.append(resized)
+path = r'C:\Users\tanisha\img\pup5.jpg'
+img = cv2.imread(path ,cv2.IMREAD_GRAYSCALE)
+resized = cv2.resize(img, dim)
+resized=resized/255.0
+resized=1-resized
+list.append(resized)
+path = r'C:\Users\tanisha\img\pup6.jpg'
+img = cv2.imread(path ,cv2.IMREAD_GRAYSCALE)
+resized = cv2.resize(img, dim)
+resized=resized/255.0
+resized=1-resized
+list.append(resized)
+path = r'C:\Users\tanisha\img\pup7.jpg'
+img = cv2.imread(path ,cv2.IMREAD_GRAYSCALE)
+resized = cv2.resize(img, dim)
+resized=resized/255.0
+resized=1-resized
+list.append(resized)
+path = r'C:\Users\tanisha\img\pup8.jpg'
+img = cv2.imread(path ,cv2.IMREAD_GRAYSCALE)
+resized = cv2.resize(img, dim)
+resized=resized/255.0
+resized=1-resized
+list.append(resized)
+path = r'C:\Users\tanisha\img\pup9.jpg'
+img = cv2.imread(path ,cv2.IMREAD_GRAYSCALE)
+resized = cv2.resize(img, dim)
+resized=resized/255.0
+resized=1-resized
+list.append(resized)
+a = np.array(list)
+print(a[0])
+predictions = model.predict(a)
+for i in range(10):
+    pr = np.argmax(predictions[i])    
+    print(pr)
