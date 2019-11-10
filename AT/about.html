@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<script>
+var a = [];
+</script>
+<html>
+        <style>
+                img {
+                  width: 100%;
+                  
+                  height: 100%;
+                }
+                </style>
+<body>
+    <img src="C:\Users\91990\AT\image-1.jpg" alt="Italian Trulli" >
+    <script>
+        window.addEventListener('mousedown',e=>{
+            var para = document.getElementById('yes');
+                var x = e.clientX;
+                var y = e.clientY;
+                para.innerHTML = para.innerHTML+' '+x.toString(10)+' '+y.toString(10);      
+         });
+    </script>
+    
+    <button id = "but1" onclick="myFunction()">FINISH</button>
+    <script>
+        function myFunction() {
+          document.getElementById("but1").innerHTML = "YOU CLICKED ME!";
+          var para = document.getElementById('yes');
+          window.open("file:///C:/Users/91990/project/public/page3.html");
+        }
+        </script>
+    <p id = 'yes'></p>
+
+    <form action = "/process_get" method = "GET">
+      Co-ordinates: <input type = "text" name ="coordinates" id ="pointdata" value =""><br>
+      <input type = "submit" value = "Submit data">
+  </form>
+
+  <button id ="but2" onclick ="myFunction1()">SUBMITTED</button> 
+  <script>
+    function myFunction1(){
+      document.getElementById("pointdata").value= document.getElementById('yes').innerHTML;
+    }
+  </script>
+
+</body>
+</html>
